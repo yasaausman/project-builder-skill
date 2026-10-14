@@ -26,8 +26,14 @@ for my explicit go-ahead. Do not start Phase 2 until I say "go" (or "build").
 
 Investigate and report the following. Keep it tight and evidence-backed.
 
+**Research budget:** at least one search per section (A to E) and about 8 to 12 searches in
+total; list the queries at the end of the Research section. Do fewer only if I ask for a quick
+check, and label the verdict "quick mode".
+
 **A. Existing solutions (supply)**
-1. Direct competitors — who already does this? Links, one-line positioning, pricing.
+1. Direct competitors — who already does this? Links, one-line positioning, pricing. Get the
+   top 3 competitors' prices from their own pricing pages; mark any price from a blog or
+   comparison site with ⚠️, including in the verdict line.
 2. Indirect / adjacent — how do people solve this *today* without a dedicated tool
    (spreadsheets, manual workarounds, a bigger product's side-feature)?
 3. Is it already done well? Be blunt.
@@ -35,6 +41,10 @@ Investigate and report the following. Keep it tight and evidence-backed.
 **B. Real demand (not hype)**
 4. Community pain signals — search Reddit, Hacker News, forums, app-store/GitHub reviews.
    Are people actually complaining about this problem and asking for a fix? Quote 2–3 real ones.
+   If a source is blocked (Reddit and Google Trends often are), try Hacker News search
+   (hn.algolia.com), the topic's own forums, GitHub issues, app-store reviews, and
+   `site:reddit.com <topic>` searches. If none gives real user signals, write "demand
+   unverified"; never substitute vendor blogs or listicles.
 5. Demand proxies — search volume / trend direction, YouTube views on the topic, waitlists,
    "alternatives to ___" searches. Is interest rising, flat, or dying? Add the current year to
    trend searches.
@@ -62,8 +72,10 @@ Then write a file called **`PLAN.md`** whose first section is `## Research & Ver
 containing the above (condensed, with source links). Leave the rest of `PLAN.md` as a stub
 with headings for Phase 2 (MVP Scope, Tech Stack, Milestones).
 
-**Then STOP.** Show me the verdict in chat and wait. Do not build anything yet.
-On NO-GO or PROTOTYPE-FIRST, offer three paths: stop here (the research is the deliverable),
+**Then STOP.** Show me the verdict in chat, followed by **Verdict rests on:** the 2–3 claims it
+depends on most, each with its link and ✅ verified or ⚠️ unverified. Then wait. Do not build
+anything yet. On PIVOT, first restate the pivoted idea in one line.
+On NO-GO, PIVOT or PROTOTYPE-FIRST, offer three paths: stop here (the research is the deliverable),
 a prototype plan (Milestone 0 on the riskiest assumption plus the smallest scaffold; no auth,
 payments or polish), or a full plan anyway (record the verdict and my decision in PLAN.md).
 
@@ -74,15 +86,22 @@ payments or polish), or a full plan anyway (record the verdict and my decision i
 1. **MVP scope** — what's in v1, what's explicitly deferred to later. Ruthless. Smallest thing
    that proves the idea.
 2. **Tech stack + approach** — pick a stack *for this specific idea*; one-line reason each.
-   Pin current versions (check them live). Flag anything that costs money.
+   Pin current versions (check them live). Flag anything that costs money. Take versions from
+   the package registry, not web search: npmjs.com or `npm view <pkg> version`; for Python,
+   pypi.org (check the latest release's "Requires Python" against mine). Other ecosystems:
+   their own registry.
 3. **Phased build plan** — milestones as a checklist. Each task is **self-contained, testable,
-   and sequenced**, with a "Done when: ___" line. If the idea was rated **Hard**, make
-   Milestone 0 a *spike* that proves the riskiest piece before anything else. Every milestone
+   and sequenced**, with a "Done when: ___" line. **Milestone 0 is always a kill test** of the
+   riskiest assumption, with a measurable pass mark (e.g. "≥70% of outputs usable on 20 real
+   samples"); if it fails, stop and revisit the verdict. If the idea was rated **Hard**, make it
+   a full spike that proves the riskiest piece before anything else. Every milestone
    ends with a lint + typecheck + test gate. If there's a UI, add a brand & design task before
    any feature screens and a final design + accessibility pass at the end.
-4. **Build it** — produce working files/artifacts I can download and run. Test with code
+4. **Order: don't skip ahead.** Write PLAN.md and PROJECT.md (below), get my OK on PLAN.md's
+   Assumptions & unknowns, run Milestone 0 and report pass/fail, and only then build the rest.
+5. **Build it** — produce working files/artifacts I can download and run. Test with code
    execution wherever possible. Show me what you verified and how.
-5. **Definition of done** per piece + how you checked it.
+6. **Definition of done** per piece + how you checked it.
 
 ### The quality bar — hold every build to these (daily projects and hackathons alike)
 A well-built project isn't the one with the most features; it's the one whose value is obvious,
